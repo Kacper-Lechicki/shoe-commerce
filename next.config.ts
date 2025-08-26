@@ -1,5 +1,8 @@
 import type { NextConfig } from 'next';
+
 import path from 'path';
+
+import './env';
 
 const nextConfig: NextConfig = {
   turbopack: {

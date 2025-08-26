@@ -16,14 +16,31 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import {
+  getKindeServerSession,
+  LogoutLink,
+} from '@kinde-oss/kinde-auth-nextjs/server';
 import { CircleUser, MenuIcon } from 'lucide-react';
+import { redirect } from 'next/navigation';
 import React from 'react';
 
 type DashboardLayoutProps = {
   children: React.ReactNode;
 };
 
-const DashboardLayout = ({ children }: DashboardLayoutProps) => {
+const DashboardLayout = async ({ children }: DashboardLayoutProps) => {
+  const { getUser, getRoles } = getKindeServerSession();
+  const user = await getUser();
+  const roles = await getRoles();
+
+  const isAdmin = () => {
+    return roles?.find((role): boolean => role.key === 'admin');
+  };
+
+  if (!user || !isAdmin) {
+    return redirect('/');
+  }
+
   return (
     <div className="flex flex-col w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
       <header className="sticky top-0 flex h-16 items-center justify-between gap-4 border-b bg-white">
@@ -69,8 +86,8 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem className="cursor-pointer">
-              Logout
+            <DropdownMenuItem asChild className="cursor-pointer">
+              <LogoutLink>Logout</LogoutLink>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
