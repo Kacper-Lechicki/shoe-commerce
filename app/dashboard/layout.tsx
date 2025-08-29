@@ -78,7 +78,7 @@ const DashboardLayout = async ({ children }: DashboardLayoutProps) => {
               size="icon"
               className="rounded-full focus-visible:ring-0 focus-visible:ring-offset-0"
             >
-              <CircleUser height={5} width={5} />
+              <CircleUser height={6} width={6} />
             </Button>
           </DropdownMenuTrigger>
 
@@ -92,6 +92,8 @@ const DashboardLayout = async ({ children }: DashboardLayoutProps) => {
           </DropdownMenuContent>
         </DropdownMenu>
       </header>
+
+      <main className="my-6 lg:my-12">{children}</main>
     </div>
   );
 };
