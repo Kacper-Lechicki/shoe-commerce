@@ -27,7 +27,7 @@ const OrdersPage = () => {
         <Table>
           <TableHeader>
             <TableRow className="h-[50px] bg-gray-200 hover:bg-gray-200">
-              <TableHead className="rounded-tl-lg font-bold">
+              <TableHead className="rounded-tl-lg font-bold pl-6">
                 Customer
               </TableHead>
 
@@ -35,22 +35,23 @@ const OrdersPage = () => {
               <TableHead className="font-bold">Status</TableHead>
               <TableHead className="font-bold">Date</TableHead>
 
-              <TableHead className="text-right rounded-tr-lg font-bold">
+              <TableHead className="text-right rounded-tr-lg font-bold pr-6">
                 Amount
               </TableHead>
             </TableRow>
           </TableHeader>
 
           <TableBody>
-            <TableRow className="h-[50px]">
-              <TableCell>
+            <TableRow className="h-[80px]">
+              <TableCell className="pl-6">
                 <p className="font-medium">Test User</p>
               </TableCell>
 
               <TableCell>Sale</TableCell>
               <TableCell>Successful</TableCell>
               <TableCell>2025-08-20</TableCell>
-              <TableCell className="text-right">$250.00</TableCell>
+
+              <TableCell className="text-right pr-6">$250.00</TableCell>
             </TableRow>
           </TableBody>
         </Table>
