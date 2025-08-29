@@ -5,12 +5,18 @@ import {
 import Link from 'next/link';
 import React from 'react';
 
-const DashboardNavigation = () => {
+type DashboardNavigationProps = {
+  onNavigationClick?: () => void;
+};
+
+const DashboardNavigation = ({
+  onNavigationClick,
+}: DashboardNavigationProps) => {
   return (
     <>
       {DASHBOARD_NAVIGATION_LINKS.map((link: DashboardNavigationLink) => {
         return (
-          <Link key={link.href} href={link.href}>
+          <Link key={link.href} href={link.href} onClick={onNavigationClick}>
             {link.name}
           </Link>
         );

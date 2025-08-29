@@ -1,3 +1,4 @@
+import DashboardMobileNavigation from '@/components/dashboard/DashboardMobileNavigation';
 import DashboardNavigation from '@/components/dashboard/DashboardNavigation';
 import { Button } from '@/components/ui/button';
 import {
@@ -9,18 +10,10 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
-import {
   getKindeServerSession,
   LogoutLink,
 } from '@kinde-oss/kinde-auth-nextjs/server';
-import { CircleUser, MenuIcon } from 'lucide-react';
+import { CircleUser } from 'lucide-react';
 import { redirect } from 'next/navigation';
 import React from 'react';
 
@@ -37,7 +30,7 @@ const DashboardLayout = async ({ children }: DashboardLayoutProps) => {
     return roles?.find((role): boolean => role.key === 'admin');
   };
 
-  if (!user || !isAdmin) {
+  if (!user || !isAdmin()) {
     return redirect('/');
   }
 
@@ -48,28 +41,7 @@ const DashboardLayout = async ({ children }: DashboardLayoutProps) => {
           <DashboardNavigation />
         </nav>
 
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button
-              className="shrink-0 md:hidden"
-              variant="outline"
-              size="icon"
-            >
-              <MenuIcon height={5} width={5} />
-            </Button>
-          </SheetTrigger>
-
-          <SheetContent side="left">
-            <SheetHeader className="sr-only">
-              <SheetTitle />
-              <SheetDescription />
-            </SheetHeader>
-
-            <nav className="flex flex-col gap-6 text-lg font-medium mt-8 p-5">
-              <DashboardNavigation />
-            </nav>
-          </SheetContent>
-        </Sheet>
+        <DashboardMobileNavigation />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

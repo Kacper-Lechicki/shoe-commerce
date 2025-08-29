@@ -27,11 +27,17 @@ const OrdersPage = () => {
         <Table>
           <TableHeader>
             <TableRow className="h-[50px] bg-gray-200 hover:bg-gray-200">
-              <TableHead>Customer</TableHead>
-              <TableHead>Type</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Date</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
+              <TableHead className="rounded-tl-lg font-bold">
+                Customer
+              </TableHead>
+
+              <TableHead className="font-bold">Type</TableHead>
+              <TableHead className="font-bold">Status</TableHead>
+              <TableHead className="font-bold">Date</TableHead>
+
+              <TableHead className="text-right rounded-tr-lg font-bold">
+                Amount
+              </TableHead>
             </TableRow>
           </TableHeader>
 
